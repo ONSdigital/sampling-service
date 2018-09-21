@@ -12,7 +12,7 @@ private[service] object SparkSessionManager {
     .appName(name = SparkAppName)
     .getOrCreate()
 
-  def withSpark(method: => Unit): Unit = {
+  def withSpark(method: () => Unit): Unit = {
     val activeSession = implicitly[SparkSession]
     val sessionName = activeSession.sparkContext.appName
     SessionLogger.log(msg = s"Running method with spark instance [$sessionName]")

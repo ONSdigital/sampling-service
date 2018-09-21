@@ -83,14 +83,14 @@ class SamplingServiceAcceptanceSpec extends SessionAcceptanceSpec with MockFacto
       val sampleCSV = (DataTransformation.getSampleFile _).andThen(FileProcessor.lineAsListOfFields)
         .apply(targetOutputDirectory)
 
-      sampleCSV ==
+      sampleCSV shouldBe
         aFrame(
           aFrameHeader(
             fieldNames = ern,         entref,      name,                      tradingStyle, address1,            address2,        address3,     address4, address5, postcode,  legalStatus, sic07,   employees, jobs, enterpriseTurnover, standardTurnover, groupTurnover, containedTurnover, apportionedTurnover, prn,          cell_no),
           aUnit(value =  "1100000005","9906000175","HIBAER",                  NoValue,      "1 GEORGE SQUARE",   "GLASGOW",       NoValue,      NoValue,  NoValue,  "G2 5LL",  "1",         "45177", "22",      "1",  "106",              "106",            "0",           "0",               "0",                 "0.147768898","5819" ),
           aUnit(value =  "1100000011","9906000415","&BAMCFLINT",              NoValue,      "1 GARENDON WAY",    "GROBY",         "LEICESTER",  NoValue,  NoValue,  "LE6 0YR", "1",         "45160", "19",      "0",  "400",              "400",            "0",           "0",               "0",                 "0.269071541","5819" ),
           aUnit(value =  "1100000008","9906000325","TLUBARE",                 NoValue,      "1 GORSE ROAD",      "REYDON",        "SOUTHWOLD",  NoValue,  NoValue,  "IP18 6NQ","1",         "45130", "13",      "3",  "197",              "197",            "0",           "0",               "0",                 "0.446872271","5819" ),
-          aUnit(value =  "1100000006","9906000205","HIBAER",                  NoValue,      "1 GLEN ROAD",       "HINDHEAD",      "SURREY",     NoValue,  NoValue,  "GU26 6QE","1",         "46182", "16",      "1",  "297",              "297",            "0",           "0",               "0",                 "0.588701588","5819" ),
+          aUnit(value =  "1100000006","9906000205","HIBAER",                  NoValue,      "1 GLEN ROAD",       "HINDHEAD",      "SURREY",     NoValue,  NoValue,  "GU26 6QE","1",         "45182", "16",      "1",  "297",              "297",            "0",           "0",               "0",                 "0.588701588","5819" ),
           aUnit(value =  "1100000002","9906000045","BUEADLIING SOLUTIONS LTD",NoValue,      "1 HAZELWOOD LANE",  "ABBOTS LANGLEY",NoValue,      NoValue,  NoValue,  "WD5 0HA", "3",         "45180", "49",      "0",  "100",              "100",            "0",           "0",               "0",                 "0.638486390","5819" ),
           aUnit(value =  "1100000009","9906000355","BUCARR",                  NoValue,      "1 GRANVILLE AVENUE","LONG EATON",    "NOTTINGHAM", NoValue,  NoValue,  "NG10 4HA","1",         "45144", "34",      "1",  "18",               "18",             "0",           "0",               "0",                 "0.847311602","5819" ),
           aUnit(value =  "1100000003","9906000075","JO2WMILITED",             NoValue,      "1 BARRASCROFTS",    "CANONBIE",      NoValue,      NoValue,  NoValue,  "DG14 0RZ","1",         "45189", "39",      "0",  "56",               "56",             "0",           "0",               "0",                 "0.095639204","5819" )

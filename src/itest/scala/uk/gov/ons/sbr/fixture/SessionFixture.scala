@@ -6,6 +6,7 @@ import org.scalatest.Outcome
 import uk.gov.ons.sbr.helpers.TestSessionManager
 import uk.gov.ons.sbr.logger.SessionLogger
 
+
 trait SessionFixture extends org.scalatest.fixture.TestSuite {
 
   override type FixtureParam = SparkSession

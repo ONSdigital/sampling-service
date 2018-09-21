@@ -14,7 +14,7 @@ brew install scala
 ### Running the Service
 To compile, build and run the application use the following command:
 ```shell
-gradle run --args 'arg1 arg2 arg3'
+gradle run --args 'arg1 arg2 arg3 arg4'
 ```
 
 ### Test

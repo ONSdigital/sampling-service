@@ -103,7 +103,7 @@ class ServiceValidationSec extends FreeSpec with Matchers with MockFactory{
         the [IllegalArgumentException] thrownBy {
           validation.validateAndParseRuntimeArgs(args = tooFewArgs)(sparkSession)
         } should have message s"Failed to run Sampling job due to invalid number of arguments passed " +
-          s"[${tooFewArgs.toString}], expected (3) got [${tooFewArgs.length}]"
+          s"[${tooFewArgs.toString}], expected (4) got [${tooFewArgs.length}]"
       }
 
       "when there are more then three arguments" in new Fixture {
@@ -112,7 +112,7 @@ class ServiceValidationSec extends FreeSpec with Matchers with MockFactory{
         the [IllegalArgumentException] thrownBy {
           validation.validateAndParseRuntimeArgs(args = tooManyArgs)(sparkSession)
         } should have message s"Failed to run Sampling job due to invalid number of arguments passed " +
-          s"[${tooManyArgs.toString}], expected (3) got [${tooManyArgs.length}]"
+          s"[${tooManyArgs.toString}], expected (4) got [${tooManyArgs.length}]"
 
       }
     }

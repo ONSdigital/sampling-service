@@ -23,7 +23,7 @@ class ServiceValidation(repository: UnitFrameRepository) {
         (unitFrameDatabaseStr, unitFrameTableNameStr, stratificationPropertiesStr, outputDirectoryStr)
       case _ =>
         throw new IllegalArgumentException(s"Failed to run Sampling job due to invalid number of arguments passed " +
-          s"[$serviceArgs], expected (3) got [${serviceArgs.length}]")
+          s"[$serviceArgs], expected (4) got [${serviceArgs.length}]")
     }
 
   private def foldValidatedPath[A](pathStr: String)(parsePath: Path => Validation[ErrorMessage, A]): Validation[ErrorMessage, A] =
@@ -49,9 +49,9 @@ class ServiceValidation(repository: UnitFrameRepository) {
     val (unitFrameDatabaseStr, unitFrameTableNameStr, stratificationPropertiesStr, outputDirectoryStr) =
       checkNumberOfArgsGiven(args)
 
-    val untiFrameStr = HiveFrame(database = unitFrameDatabaseStr, tableName = unitFrameTableNameStr)
+    val unitFrameStr = HiveFrame(database = unitFrameDatabaseStr, tableName = unitFrameTableNameStr)
 
-    val formattedArgsOrError = Validation.map3(checkUnitFrame(untiFrameStr),
+    val formattedArgsOrError = Validation.map3(checkUnitFrame(unitFrameStr),
       checkProperties(stratificationPropertiesStr), checkOutputDirectory(outputDirectoryStr)
     )(SampleMethodsArguments)
 
