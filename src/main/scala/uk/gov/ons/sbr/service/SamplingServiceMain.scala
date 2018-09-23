@@ -12,7 +12,6 @@ import uk.gov.ons.sbr.service.validation.{SampleMethodsArguments, ServiceValidat
 import uk.gov.ons.sbr.support.TrySupport
 import uk.gov.ons.sbr.utils.Export
 
-
 object SamplingServiceMain {
   def main(args: Array[String]): Unit = {
     import SparkSessionManager.sparkSession

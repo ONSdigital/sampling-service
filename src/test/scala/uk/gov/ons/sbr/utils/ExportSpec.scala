@@ -22,7 +22,7 @@ class ExportSpec extends FreeSpec with Matchers{
     val aTempDirectory = createTempDirectory(prefix = "export-unit-test-")
   }
 
-  "A dataframe is exported" - {
+  "A DataFrame is exported" - {
     "when given a valid dataframe" - {
       "with an existing directory" in new Fixture {
         val someFields = Seq(
@@ -31,8 +31,6 @@ class ExportSpec extends FreeSpec with Matchers{
         )
 
         val someTestDf = aDataFrame(fields = someFields, columnNames = "rowId", "response")
-
-
 
         Export(someTestDf, HadoopPathProcessor.fromString(aTempDirectory.toString))
         val anOutput = filterDirectory(aTempDirectory, suffixPattern = s".$CSV").head

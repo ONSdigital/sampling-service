@@ -1,11 +1,11 @@
 repositories {
-    mavenLocal()
     jcenter()
     mavenCentral()
     maven {
         url "https://repository.cloudera.com/artifactory/cloudera-repos/"
     }
-//    maven {
-//        url  "https://dl.bintray.com/ons/ONS-Registers"
-//    }
+    maven {
+        url  "https://dl.bintray.com/ons/ONS-Registers"
+    }
+    mavenLocal()
 }

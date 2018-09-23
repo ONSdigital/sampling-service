@@ -24,6 +24,6 @@ private[service] object SparkSessionManager {
     finally
       SessionLogger.log(msg = s"Stopping active session [$sessionName] started on " +
         s"[${activeSession.sparkContext.startTime}] in thread.")
-    activeSession.close
+      activeSession.close
   }
 }

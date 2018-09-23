@@ -35,7 +35,7 @@ In the future, the selection strata are presumed to evolve and not have a static
 ### Dependencies
 
 Fundamentally at the sampling service's core, the SML is required as it houses both the Stratification and Sampling methods. We do this by adding the library as a dependency. 
-####Production
+#####Production
 This means when building in Jenkins the SML will be gathered from Artifactory.  It is assumed that the SML at this point has been pre-deployed (as it is currently). 
-####Development
+#####Development
 As Artfifactory is not accessible from off-network devices we rely on Bintray which is configured under dependencies.gradle. However, if the Bintray solution fails then installing the SML locally remains a alternative option.

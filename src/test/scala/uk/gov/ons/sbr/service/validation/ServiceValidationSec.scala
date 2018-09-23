@@ -16,7 +16,7 @@ class ServiceValidationSec extends FreeSpec with Matchers with MockFactory{
 
   private trait Fixture{
     private val ProvidedPropertiesPrefix = "stratification_props_"
-    private val TargetOutputDirectoryPrefix = "sampling_output_123_"
+    private val TargetOutputDirectoryPrefix = "sampling_output_"
 
     val TargetDatabase = "db"
     val TargetTableName = "enterprise_frame"

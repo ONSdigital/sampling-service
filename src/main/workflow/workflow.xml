@@ -1,4 +1,4 @@
-<workflow-app name="Sampling Service" xmlns="uri:oozie:workflow:0.5">
+<workflow-app name="SBR Sampling Service" xmlns="uri:oozie:workflow:0.5">
     <start to="shell-32b8"/>
     <kill name="Kill">
         <message>Action failed, error message[${wf:errorMessage(wf:lastErrorNode())}]</message>
@@ -7,11 +7,15 @@
         <shell xmlns="uri:oozie:shell-action:0.1">
             <job-tracker>${jobTracker}</job-tracker>
             <name-node>${nameNode}</name-node>
-            <exec>/user/${user}/lib/sampling-service/service-submit.sh</exec>
+            <exec>service-submit.sh</exec>
             <argument>${node}</argument>
             <argument>${user}</argument>
-            <file>/user/${user}/lib/sampling-service/service-submit.sh#service-submit.sh</file>
-            <file>hdfs://${node}/user/${user}/lib/sampling-service/sbr-sampling-service-1.0-all.jar#sbr-sampling-service-1.0-all.jar</file>
+            <argument>${appVersion}</argument>
+            <argument>${hiveDatabase}</argument>
+            <argument>${hiveFrameTableName}</argument>
+            <argument>${stratificationPropertiesFileHdfsFullPath}</argument>
+            <argument>${sampleOutputHdfsDirectory}</argument>
+            <file>hdfs://${node}/user/${user}/lib/sbr-sampling-service/app/sbr-sampling-service-*.jar#sbr-sampling-service-*.jar</file>
                 <capture-output/>
         </shell>
         <ok to="End"/>

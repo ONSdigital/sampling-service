@@ -10,7 +10,7 @@ import uk.gov.ons.registers.{Failure, Success}
 import uk.gov.ons.sbr.helpers.TestSessionManager
 import uk.gov.ons.sbr.helpers.utils.TestFileUtils.createTempFile
 
-class FileProcessorSpec extends FreeSpec with Matchers{
+class HadoopPathProcessorSpec extends FreeSpec with Matchers{
 
   private def writeLines(file: Path, text: String): Unit = {
     val fw = new FileWriter(file.toString, true)
@@ -44,7 +44,7 @@ class FileProcessorSpec extends FreeSpec with Matchers{
 
     "fails to be created" - {
       "when path contains invalid characters" ignore new Fixture {
-        val badPathString = "|"
+        val badPathString = "/not_a_directory/"
         HadoopPathProcessor.validatePath(badPathString) shouldBe a [Failure[_]]
       }
     }

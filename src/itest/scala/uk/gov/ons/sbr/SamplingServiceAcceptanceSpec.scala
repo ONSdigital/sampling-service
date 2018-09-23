@@ -48,7 +48,7 @@ class SamplingServiceAcceptanceSpec extends SessionAcceptanceSpec with MockFacto
   private val TargetDatabase = "db"
   private val TargetTableName = "enterprise_frame"
   private val TargetUnitFrame = HiveFrame(TargetDatabase, TargetTableName)
-  private val TargetOutputDirectoryPrefix = "sampling_output_123_"
+  private val TargetOutputDirectoryPrefix = "sampling_output_"
 
   private val repository = mock[UnitFrameRepository]
   private val validation = new ServiceValidation(repository)
