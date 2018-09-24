@@ -10,13 +10,13 @@ import uk.gov.ons.sbr.helpers.sample.SampleEnterpriseUnit.FieldNames._
 import uk.gov.ons.sbr.helpers.utils.TestFileUtils.createTempDirectory
 import uk.gov.ons.sbr.helpers.utils.{DataTransformation, ExportTable}
 
-case class SessionInitialization(sparkSession: SparkSession,
+private[fixture] case class SessionInitialization(sparkSession: SparkSession,
                                  frame: DataFrame,
                                  stratificationProperties: Path,
                                  outputDirectory: Path
                         )
 
-object SessionInitialization {
+private[fixture] object SessionInitialization {
   private object ArgumentValues extends SampleEnterpriseUnit{
     val EnterpriseUnitFrame =
       aFrame(
