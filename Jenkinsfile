@@ -75,19 +75,19 @@ pipeline {
             }
         }
 
-        stage('Validate') {
-            failFast true
-            parallel {
-                stage('Test: Unit') {
-                    agent { label "build.${agentGradleVersion}" }
-                    environment {
-                        STAGE = "Validate - Test: Unit"
-                    }
-                    steps {
-                        unstash name: 'Checkout'
-                        sh 'gradle test'
-                    }
-                    post {
+//        stage('Validate') {
+//            failFast true
+//            parallel {
+//                stage('Test: Unit') {
+//                    agent { label "build.${agentGradleVersion}" }
+//                    environment {
+//                        STAGE = "Validate - Test: Unit"
+//                    }
+//                    steps {
+//                        unstash name: 'Checkout'
+//                        sh 'gradle test'
+//                    }
+//                    post {
 //                        always {
 //                            junit '**/build/test-results/test/*.xml'
 //                            cobertura autoUpdateHealth: false,
@@ -102,68 +102,68 @@ pipeline {
 //                                    onlyStable: false,
 //                                    zoomCoverageChart: false
 //                        }
-                        success {
-                            postSuccess()
-                        }
-                        failure {
-                            postFail()
-                        }
-                    }
-                }
-                stage('Style') {
-                    agent { label "build.${agentGradleVersion}" }
-                    environment {
-                        STAGE = "Validate - Test: Style"
-                    }
-                    steps {
-                        unstash name: 'Checkout'
-                        colourText("info", "Running style tests")
-                        sh 'gradle scalaStyle'
-                    }
-                    post {
-                        always {
-                            checkstyle canComputeNew: false, defaultEncoding: '', healthy: '', pattern: 'build/scala_style_result.xml', unHealthy: ''
-                        }
-                        success {
-                            postSuccess()
-                        }
-                        failure {
-                            postFail()
-                        }
-                    }
-                }
-            }
-            post {
-                success {
-                    postSuccess()
-                }
-                failure {
-                    postFail()
-                }
-            }
-        }
+//                        success {
+//                            postSuccess()
+//                        }
+//                        failure {
+//                            postFail()
+//                        }
+//                    }
+//                }
+//                stage('Style') {
+//                    agent { label "build.${agentGradleVersion}" }
+//                    environment {
+//                        STAGE = "Validate - Test: Style"
+//                    }
+//                    steps {
+//                        unstash name: 'Checkout'
+//                        colourText("info", "Running style tests")
+//                        sh 'gradle scalaStyle'
+//                    }
+//                    post {
+//                        always {
+//                            checkstyle canComputeNew: false, defaultEncoding: '', healthy: '', pattern: 'build/scala_style_result.xml', unHealthy: ''
+//                        }
+//                        success {
+//                            postSuccess()
+//                        }
+//                        failure {
+//                            postFail()
+//                        }
+//                    }
+//                }
+//            }
+//            post {
+//                success {
+//                    postSuccess()
+//                }
+//                failure {
+//                    postFail()
+//                }
+//            }
+//        }
 
-        stage('Test: Acceptance') {
-            agent { label "build.${agentGradleVersion}" }
-            environment {
-                STAGE = 'Test: Acceptance'
-            }
-            steps {
-                unstash name: 'Checkout'
-                sh "gradle itest"
-            }
-            post {
-                always {
-                    junit '**/build/test-results/itest/*.xml'
-                }
-                success {
-                    postSuccess()
-                }
-                failure {
-                    postFail()
-                }
-            }
-        }
+//        stage('Test: Acceptance') {
+//            agent { label "build.${agentGradleVersion}" }
+//            environment {
+//                STAGE = 'Test: Acceptance'
+//            }
+//            steps {
+//                unstash name: 'Checkout'
+//                sh "gradle itest"
+//            }
+//            post {
+//                always {
+//                    junit '**/build/test-results/itest/*.xml'
+//                }
+//                success {
+//                    postSuccess()
+//                }
+//                failure {
+//                    postFail()
+//                }
+//            }
+//        }
 
         stage('Publish') {
             agent { label "build.${agentGradleVersion}" }
