@@ -1,5 +1,5 @@
 dependencies {
-    compile     group: 'uk.gov.ons',        name: 'registers-sml',                      version: '1.8'
+    compile     group: 'uk.gov.ons',        name: 'registers-sml',                      version: '1.9'
     compile     group: 'org.scala-lang',    name: 'scala-library',                      version: scalaCompleteVersion
     provided    group: 'org.apache.spark',  name: "spark-sql_${scalaMinorVersion}",     version: cdhVersion
     testCompile group: 'org.scalatest',     name: "scalatest_${scalaMinorVersion}",     version: '3.0.4'
