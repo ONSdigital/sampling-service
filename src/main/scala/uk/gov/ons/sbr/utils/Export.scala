@@ -8,10 +8,11 @@ import uk.gov.ons.sbr.utils.HadoopPathProcessor.{CSV, Header}
 
 object Export {
   def apply(dataFrame: DataFrame, path: Path, headerOption: Boolean = true): Unit = {
-    SessionLogger.log(msg = s"Exporting Sample output to csv [$path] with length [${dataFrame.count}]")
 
-    dataFrame
-      .coalesce(numPartitions = 1)
+    val dataFramePrtn = dataFrame.coalesce(1)
+    SessionLogger.log(msg = s"Exporting Sample output to csv [$path] with length [${dataFramePrtn.count}]")
+
+    dataFramePrtn
       .write.format(CSV)
       .option(Header, headerOption)
       .mode(SaveMode.Append)
