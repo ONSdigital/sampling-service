@@ -39,8 +39,8 @@ object SamplingServiceMain extends Stratification with ServiceValidation with Df
       case uk.gov.ons.sbr.globals.Globals.sampling => SparkSessionManager.withSpark{
                                                               SessionLogger.log(msg ="Initiating Sampling Service")
                                                               val processedArguments: SampleMethodArguments = parseSamplingArgs(args.toList)
-                                                               logPartitionInfo(processedArguments.stratificationDF,42,"sampling-service.main(): stratificationDF")
-                                                               logPartitionInfo(processedArguments.samplingProperties,43,"sampling-service.main(): samplingProperties")
+                                                              logPartition(processedArguments.stratificationDF,42,"sampling-service.main(): stratificationDF")
+                                                              logPartition(processedArguments.samplingProperties,43,"sampling-service.main(): samplingProperties")
                                                                SessionLogger.log(msg ="Passed validation. Beginning sample creation process..")
                                                               createSample(processedArguments)
                                                              }
@@ -48,8 +48,8 @@ object SamplingServiceMain extends Stratification with ServiceValidation with Df
       case uk.gov.ons.sbr.globals.Globals.stratification => SparkSessionManager.withSpark{
                                                               SessionLogger.log(msg ="Initiating Sampling Service")
                                                               val processedArguments: StratificationMethodArguments = parseStratificationArgs(args.toList)
-                                                              logPartitionInfo(processedArguments.unitFrame,51,"sampling-service.main(): unitFrame")
-                                                              logPartitionInfo(processedArguments.stratificationProperties,52,"sampling-service.main(): stratificationProperties")
+                                                              logPartition(processedArguments.unitFrame,51,"sampling-service.main(): unitFrame")
+                                                              logPartition(processedArguments.stratificationProperties,52,"sampling-service.main(): stratificationProperties")
                                                               doStratify(processedArguments)
                                                              }
 

@@ -1,12 +1,12 @@
 package uk.gov.ons.sbr.service.repository.hive
 
-import scala.util.{Success, Try}
 import org.apache.spark.sql.{DataFrame, SaveMode, SparkSession}
 import uk.gov.ons.api.java.methods.registers.annotation.Unused
 import uk.gov.ons.sbr.service.repository.UnitFrameRepository
 import uk.gov.ons.sbr.service.repository.UnitFrameRepository.ErrorMessage
 import uk.gov.ons.sbr.support.TrySupport
-import uk.gov.ons.sbr.service.repository.hive.HiveFrame
+
+import scala.util.Try
 
 
 
